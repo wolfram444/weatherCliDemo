@@ -1,5 +1,4 @@
-fn main() {
-    use std::io::{self, Write};
+use std::io::{self, Write};
 
 fn main() {
     println!(" Weather forecast (demo version) ");
@@ -39,5 +38,4 @@ fn main() {
     println!("Temperature: {}°C", temp);
     println!("Conditions: {}", conditions);
     println!("Humidity: {}%", 40 + (city.len() % 40));
-}
 }
