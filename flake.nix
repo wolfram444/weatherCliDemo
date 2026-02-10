@@ -3,10 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs }: let
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs, flake-utils }: 
+  
+    flake-utils.lib.eachDefaultSystem (system:
+  
+  let
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     devShells.${system}.default = pkgs.mkShell {
@@ -31,6 +35,6 @@
       program = "${self.packages.${system}.runme}/bin/weather_cli_demo";
   };
 
-  };
-
+  }
+    )
 }
